@@ -18,6 +18,10 @@
 }
 
 @layer components {
+  .page {
+    @apply w-full h-full bg-blue-900 flex flex-col justify-center items-center;
+  }
+
   .btn {
     background-color: #ddd;
     padding: 0.5rem;
