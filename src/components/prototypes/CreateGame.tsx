@@ -1,12 +1,16 @@
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import { useAppDispatch } from '@/hooks/reduxHooks';
+import { addUsername } from '@/reducers/user';
 import Layout from '../layouts/Layout';
 
 export default function CreateGame() {
   const [username, setUsername] = useState<string>('');
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
   const handleClickOnCreateGame = () => {
+    dispatch(addUsername(username));
     router.push('/lobby');
   }
 
