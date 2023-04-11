@@ -10,7 +10,9 @@ export default function Home() {
         <Link className='btn' href='createGame'>
           Créer partie
         </Link>
-        <button className='btn'>Rejoindre partie</button>
+        <Link className='btn' href='joinGame'>
+          Rejoindre partie
+        </Link>
       </div>
     </Layout>
   );
