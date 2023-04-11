@@ -7,4 +7,9 @@ socket.onAny((event, ...args) => {
   console.log(event, args);
 });
 
+socket.on("connect_error", (err) => {
+  console.log('Socket error: ', err.message); // not authorized
+  socket.disconnect();
+});
+
 export default socket;
