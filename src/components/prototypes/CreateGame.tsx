@@ -1,17 +1,37 @@
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAppDispatch } from '@/hooks/reduxHooks';
 import { addUsername } from '@/reducers/user';
 import Layout from '../layouts/Layout';
+import socket from '@/utils/socket';
 
 export default function CreateGame() {
   const [username, setUsername] = useState<string>('');
   const router = useRouter();
   const dispatch = useAppDispatch();
 
+  useEffect(() => {
+    socket.disconnect();
+  }, []);
+
   const handleClickOnCreateGame = () => {
-    dispatch(addUsername(username));
-    router.push('/lobby');
+    if (username) {
+      socket.auth = { username };
+      socket.connect();
+
+      socket.on('connect', () => {
+        dispatch(addUsername(username));
+        router.push('/lobby');
+      });
+
+      socket.on('moveToLobby', (...args) => {
+        console.log('moving', args);
+      });
+
+      socket.on('connect_error', () => {
+        alert('Error occured, please try again');
+      });
+    }
   }
 
   return (
