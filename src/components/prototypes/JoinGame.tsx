@@ -36,6 +36,8 @@ const JoinGame = () => {
     <Layout title='New game' description='Create a new slap game'>
       <div className='page gap-4'>
         <Input
+          label='Enter your username'
+          hideLabel
           name='username'
           type='text'
           placeholder='Enter your username'
@@ -43,6 +45,8 @@ const JoinGame = () => {
           value={username} />
 
         <Input
+          label='Enter room ID'
+          hideLabel
           name='room id'
           type='text'
           placeholder='Enter room ID'

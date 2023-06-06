@@ -1,14 +1,15 @@
 import React, { InputHTMLAttributes, FC } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label?: string;
+  label: string;
+  hideLabel?: boolean;
   name: string;
 }
 
-const Input: FC<InputProps> = ({ name, label = "", ...attributes }) => {
+const Input: FC<InputProps> = ({ label, hideLabel = false, name, ...attributes }) => {
   return (
     <div className=''>
-      <label htmlFor='name'>{label}</label>
+      <label className={`${hideLabel ? 'hidden' : ''}`} htmlFor='name'>{label}</label>
       <input id='name' {...attributes} />
     </div>
   );

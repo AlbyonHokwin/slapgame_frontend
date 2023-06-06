@@ -35,6 +35,8 @@ const CreateGame = () => {
     <Layout title='New game' description='Create a new slap game'>
       <div className='page gap-4'>
         <Input
+          label='Enter your username'
+          hideLabel
           name='username'
           type='text'
           placeholder='Enter your username'
