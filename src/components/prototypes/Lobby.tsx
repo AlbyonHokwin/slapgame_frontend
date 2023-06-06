@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useAppSelector } from '@/hooks/reduxHooks';
 import socket from '@/utils/socket';
 import Layout from '../layouts/Layout';
+import Button from '../elements/Button';
 
 const Lobby = () => {
   const username = useAppSelector(state => state.user.username);
@@ -21,7 +22,7 @@ const Lobby = () => {
     <Layout title='Lobby' description={description}>
       <div className='page gap-4'>
         Lobby of {username}
-        <button onClick={() => socket.emit('test')}>test</button>
+        <Button onClick={() => socket.emit('test')}>test</Button>
       </div>
     </Layout>
   );

@@ -4,6 +4,8 @@ import { useAppDispatch } from '@/hooks/reduxHooks';
 import { useRouter } from 'next/router';
 import { addUsername } from '@/reducers/user';
 import socket from '@/utils/socket';
+import Input from '../elements/Input';
+import Button from '../elements/Button';
 
 const JoinGame = () => {
   const [username, setUsername] = useState<string>('');
@@ -25,7 +27,7 @@ const JoinGame = () => {
       });
 
       socket.on('moveToLobby', (roomId) => {
-        router.push('/lobby',{query: {roomId}});
+        router.push('/lobby', { query: { roomId } });
       });
     }
   }
@@ -33,19 +35,21 @@ const JoinGame = () => {
   return (
     <Layout title='New game' description='Create a new slap game'>
       <div className='page gap-4'>
-        <input
+        <Input
+          name='username'
           type='text'
           placeholder='Enter your username'
           onChange={e => setUsername(e.target.value)}
           value={username} />
 
-        <input
+        <Input
+          name='room id'
           type='text'
           placeholder='Enter room ID'
           onChange={e => setRoomId(e.target.value)}
           value={roomId} />
 
-        <button className='btn' onClick={handleClickOnJoinGame}>Rejoindre partie</button>
+        <Button onClick={handleClickOnJoinGame}>Rejoindre partie</Button>
       </div>
     </Layout>
   );

@@ -4,6 +4,8 @@ import { useAppDispatch } from '@/hooks/reduxHooks';
 import { addUsername } from '@/reducers/user';
 import Layout from '../layouts/Layout';
 import socket from '@/utils/socket';
+import Button from '../elements/Button';
+import Input from '../elements/Input';
 
 const CreateGame = () => {
   const [username, setUsername] = useState<string>('');
@@ -24,7 +26,7 @@ const CreateGame = () => {
       });
 
       socket.on('moveToLobby', (roomId) => {
-        router.push('/lobby',{query: {roomId}});
+        router.push('/lobby', { query: { roomId } });
       });
     }
   }
@@ -32,12 +34,14 @@ const CreateGame = () => {
   return (
     <Layout title='New game' description='Create a new slap game'>
       <div className='page gap-4'>
-        <input
+        <Input
+          name='username'
           type='text'
           placeholder='Enter your username'
           onChange={e => setUsername(e.target.value)}
-          value={username} />
-        <button className='btn' onClick={handleClickOnCreateGame}>Créer partie</button>
+          value={username}
+        />
+        <Button onClick={handleClickOnCreateGame}>Créer partie</Button>
       </div>
     </Layout>
   );
