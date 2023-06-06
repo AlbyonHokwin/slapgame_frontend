@@ -21,15 +21,10 @@ export default function CreateGame() {
 
       socket.on('connect', () => {
         dispatch(addUsername(username));
-        router.push('/lobby');
       });
 
-      socket.on('moveToLobby', (...args) => {
-        console.log('moving', args);
-      });
-
-      socket.on('connect_error', () => {
-        alert('Error occured, please try again');
+      socket.on('moveToLobby', (roomId) => {
+        router.push('/lobby',{query: {roomId}});
       });
     }
   }

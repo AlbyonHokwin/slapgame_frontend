@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { addUsername } from '@/reducers/user';
 import socket from '@/utils/socket';
 
-function JoinGame() {
+export default function JoinGame() {
   const [username, setUsername] = useState<string>('');
   const [roomId, setRoomId] = useState<string>('');
   const router = useRouter();
@@ -22,11 +22,10 @@ function JoinGame() {
 
       socket.on('connect', () => {
         dispatch(addUsername(username));
-        router.push('/lobby');
       });
 
-      socket.on('connect_error', () => {
-        alert('Error occured, please try again');
+      socket.on('moveToLobby', (roomId) => {
+        router.push('/lobby',{query: {roomId}});
       });
     }
   }
@@ -49,7 +48,5 @@ function JoinGame() {
         <button className='btn' onClick={handleClickOnJoinGame}>Rejoindre partie</button>
       </div>
     </Layout>
-  )
-}
-
-export default JoinGame
+  );
+};
