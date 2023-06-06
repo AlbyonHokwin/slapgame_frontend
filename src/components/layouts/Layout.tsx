@@ -6,7 +6,7 @@ type Props = PropsWithChildren & {
   description: string;
 };
 
-export default function Layout({ children, title = "", description }: Props) {
+const Layout = ({ children, title = "", description }: Props) => {
   const titleDisplayed = title ? `Slap Game - ${title}` : 'Slap Game';
   return (
     <>
@@ -22,3 +22,5 @@ export default function Layout({ children, title = "", description }: Props) {
     </>
   );
 };
+
+export default Layout;

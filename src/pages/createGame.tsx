@@ -1,8 +1,10 @@
 import React from 'react';
 import CreateGame from '@/components/prototypes/CreateGame';
 
-export default function CreateGamePage() {
+const CreateGamePage = () => {
   return (
     <CreateGame />
   );
 };
+
+export default CreateGamePage;

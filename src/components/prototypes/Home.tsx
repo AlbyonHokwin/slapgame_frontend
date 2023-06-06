@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Layout from '../layouts/Layout';
 import socket from '@/utils/socket';
 
-export default function Home() {
+const Home = () => {
   useEffect(() => {
     socket.disconnect();
   }, []);
@@ -22,3 +22,5 @@ export default function Home() {
     </Layout>
   );
 };
+
+export default Home;

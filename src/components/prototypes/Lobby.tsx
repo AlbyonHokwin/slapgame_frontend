@@ -4,12 +4,12 @@ import { useAppSelector } from '@/hooks/reduxHooks';
 import socket from '@/utils/socket';
 import Layout from '../layouts/Layout';
 
-export default function Lobby() {
+const Lobby = () => {
   const username = useAppSelector(state => state.user.username);
   const router = useRouter();
 
   useEffect(() => {
-    if (!username) router.push('/');
+    if (!username || socket.disconnected) router.push('/');
 
     socket.on('player:new', playerUsername => {
       console.log('new player:', playerUsername);
@@ -26,3 +26,5 @@ export default function Lobby() {
     </Layout>
   );
 };
+
+export default Lobby;

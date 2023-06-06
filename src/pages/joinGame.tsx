@@ -1,8 +1,10 @@
 import React from 'react';
 import JoinGame from '@/components/prototypes/JoinGame';
 
-export default function JoinGamePage() {
+const JoinGamePage = () => {
   return (
     <JoinGame />
   );
 };
+
+export default JoinGamePage;

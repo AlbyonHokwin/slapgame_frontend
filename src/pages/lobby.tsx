@@ -1,12 +1,10 @@
 import React from 'react';
 import Lobby from '@/components/prototypes/Lobby';
 
-type Props = {
-  username: string;
-}
-
-export default function LobbyPage({ username }: Props) {
+const LobbyPage = () => {
   return (
-    <Lobby username={username} />
+    <Lobby />
   );
 };
+
+export default LobbyPage;

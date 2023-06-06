@@ -5,7 +5,7 @@ import { addUsername } from '@/reducers/user';
 import Layout from '../layouts/Layout';
 import socket from '@/utils/socket';
 
-export default function CreateGame() {
+const CreateGame = () => {
   const [username, setUsername] = useState<string>('');
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -42,3 +42,5 @@ export default function CreateGame() {
     </Layout>
   );
 };
+
+export default CreateGame;

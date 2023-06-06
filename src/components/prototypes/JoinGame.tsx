@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { addUsername } from '@/reducers/user';
 import socket from '@/utils/socket';
 
-export default function JoinGame() {
+const JoinGame = () => {
   const [username, setUsername] = useState<string>('');
   const [roomId, setRoomId] = useState<string>('');
   const router = useRouter();
@@ -50,3 +50,5 @@ export default function JoinGame() {
     </Layout>
   );
 };
+
+export default JoinGame;
