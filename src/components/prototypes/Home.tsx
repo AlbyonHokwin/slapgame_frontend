@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Layout from '../layouts/Layout';
+import socket from '@/utils/socket';
 
 export default function Home() {
+  useEffect(() => {
+    socket.disconnect();
+  }, []);
+
   return (
-    <Layout title='Slap Game' description='Come play to slap game !'>
+    <Layout description='Come play to slap game !'>
       <div className='page gap-4'>
         <h1 className='text-xl'>Slap game</h1>
         <Link className='btn' href='createGame'>
